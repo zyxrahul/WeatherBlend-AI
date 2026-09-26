@@ -1,0 +1,5 @@
+Configuration,Features_Removed,Num_Features,Temp_MAE,Temp_RMSE,Rain_MAE,Rain_RMSE,Rain_CSI,Overall_MAE,Overall_RMSE,MAE_Drop_Pct
+Full Model (Control),None,19,0.8361,1.1221,0.9846,2.2091,0.8049,0.9104,1.752,0.0
+Without Weather Regime,weather_regime,18,0.8361,1.1222,1.002,2.2349,0.8059,0.9191,1.7684,0.95
+Without Rolling-Skill Features,"roll_err_source_1, roll_err_source_2, roll_err_source_3",16,0.8356,1.1214,0.9828,2.2041,0.8051,0.9092,1.7486,-0.13
+Without Lead-Time & Seasonal,"lead_hours, sin_month, cos_month, sin_doy, cos_doy",14,0.846,1.1353,1.0328,2.247,0.7925,0.9394,1.7802,3.19

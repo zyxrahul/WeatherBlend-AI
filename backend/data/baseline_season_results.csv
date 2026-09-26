@@ -1,0 +1,65 @@
+variable,season,model,MAE,RMSE,Skill_Score_RMSE
+temperature,Winter,Source 1 (NWP),1.9998,3.0467,-0.1382
+temperature,Winter,Source 2 (Ensemble),1.5343,1.9733,0.2628
+temperature,Winter,Source 3 (AI-Model),1.1748,1.4871,0.4444
+temperature,Winter,Persistence,2.0844,2.6767,0.0
+temperature,Winter,1. Equal-Weight Avg,0.9562,1.3082,0.5113
+temperature,Winter,2. Best Single Historical,1.0442,1.382,0.4837
+temperature,Winter,3. Inverse-Error Weighting,0.7716,1.0243,0.6173
+temperature,Winter,4. Bias-Corrected Avg,0.9493,1.2982,0.515
+temperature,Pre-Monsoon,Source 1 (NWP),2.0071,3.0569,-0.061
+temperature,Pre-Monsoon,Source 2 (Ensemble),1.5605,2.0035,0.3046
+temperature,Pre-Monsoon,Source 3 (AI-Model),1.1787,1.4877,0.4836
+temperature,Pre-Monsoon,Persistence,2.2524,2.881,0.0
+temperature,Pre-Monsoon,1. Equal-Weight Avg,0.9613,1.3131,0.5442
+temperature,Pre-Monsoon,2. Best Single Historical,1.0444,1.3763,0.5223
+temperature,Pre-Monsoon,3. Inverse-Error Weighting,0.771,1.0185,0.6465
+temperature,Pre-Monsoon,4. Bias-Corrected Avg,0.9582,1.3077,0.5461
+temperature,Monsoon,Source 1 (NWP),2.0157,3.0863,-0.2616
+temperature,Monsoon,Source 2 (Ensemble),1.0934,1.3994,0.428
+temperature,Monsoon,Source 3 (AI-Model),1.1829,1.4979,0.3877
+temperature,Monsoon,Persistence,1.9707,2.4463,0.0
+temperature,Monsoon,1. Equal-Weight Avg,0.891,1.2329,0.496
+temperature,Monsoon,2. Best Single Historical,0.9865,1.3047,0.4667
+temperature,Monsoon,3. Inverse-Error Weighting,0.6906,0.9025,0.6311
+temperature,Monsoon,4. Bias-Corrected Avg,0.8855,1.2206,0.501
+temperature,Post-Monsoon,Source 1 (NWP),2.0148,3.106,-0.2069
+temperature,Post-Monsoon,Source 2 (Ensemble),1.5305,1.9742,0.2328
+temperature,Post-Monsoon,Source 3 (AI-Model),1.1816,1.4944,0.4193
+temperature,Post-Monsoon,Persistence,2.0206,2.5734,0.0
+temperature,Post-Monsoon,1. Equal-Weight Avg,0.9586,1.327,0.4844
+temperature,Post-Monsoon,2. Best Single Historical,1.0539,1.3935,0.4585
+temperature,Post-Monsoon,3. Inverse-Error Weighting,0.7793,1.031,0.5994
+temperature,Post-Monsoon,4. Bias-Corrected Avg,0.9561,1.3212,0.4866
+rainfall,Winter,Source 1 (NWP),4.0611,8.0307,-3.5998
+rainfall,Winter,Source 2 (Ensemble),2.1208,3.8249,-1.1908
+rainfall,Winter,Source 3 (AI-Model),1.5688,2.8487,-0.6317
+rainfall,Winter,Persistence,0.4794,1.7459,0.0
+rainfall,Winter,1. Equal-Weight Avg,2.5139,3.7323,-1.1378
+rainfall,Winter,2. Best Single Historical,1.5688,2.8487,-0.6317
+rainfall,Winter,3. Inverse-Error Weighting,1.8987,2.6562,-0.5215
+rainfall,Winter,4. Bias-Corrected Avg,1.5008,2.5559,-0.464
+rainfall,Pre-Monsoon,Source 1 (NWP),4.757,8.5739,-0.1296
+rainfall,Pre-Monsoon,Source 2 (Ensemble),2.5728,4.1952,0.4473
+rainfall,Pre-Monsoon,Source 3 (AI-Model),1.9098,3.1183,0.5892
+rainfall,Pre-Monsoon,Persistence,4.1693,7.5902,0.0
+rainfall,Pre-Monsoon,1. Equal-Weight Avg,2.6369,3.8574,0.4918
+rainfall,Pre-Monsoon,2. Best Single Historical,1.9098,3.1183,0.5892
+rainfall,Pre-Monsoon,3. Inverse-Error Weighting,2.0268,2.7835,0.6333
+rainfall,Pre-Monsoon,4. Bias-Corrected Avg,1.9647,3.0299,0.6008
+rainfall,Monsoon,Source 1 (NWP),8.9265,13.6534,0.6489
+rainfall,Monsoon,Source 2 (Ensemble),2.2946,3.2616,0.9161
+rainfall,Monsoon,Source 3 (AI-Model),2.664,3.7161,0.9044
+rainfall,Monsoon,Persistence,27.8632,38.8826,0.0
+rainfall,Monsoon,1. Equal-Weight Avg,3.4605,4.9897,0.8717
+rainfall,Monsoon,2. Best Single Historical,2.2946,3.2616,0.9161
+rainfall,Monsoon,3. Inverse-Error Weighting,1.873,2.4953,0.9358
+rainfall,Monsoon,4. Bias-Corrected Avg,3.2826,4.7326,0.8783
+rainfall,Post-Monsoon,Source 1 (NWP),4.2645,8.0134,0.2288
+rainfall,Post-Monsoon,Source 2 (Ensemble),2.3702,4.0991,0.6055
+rainfall,Post-Monsoon,Source 3 (AI-Model),1.7737,3.0141,0.7099
+rainfall,Post-Monsoon,Persistence,3.7967,10.3903,0.0
+rainfall,Post-Monsoon,1. Equal-Weight Avg,2.5396,3.714,0.6426
+rainfall,Post-Monsoon,2. Best Single Historical,1.7737,3.0141,0.7099
+rainfall,Post-Monsoon,3. Inverse-Error Weighting,1.966,2.7202,0.7382
+rainfall,Post-Monsoon,4. Bias-Corrected Avg,1.6861,2.6971,0.7404

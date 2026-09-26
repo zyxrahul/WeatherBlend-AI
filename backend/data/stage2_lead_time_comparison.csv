@@ -1,0 +1,73 @@
+variable,lead_hours,model,MAE,RMSE,Skill_Score_RMSE
+temperature,24,Source 1 (NWP),0.4776,0.5984,0.5753
+temperature,24,Source 2 (Ensemble),1.0208,1.2933,0.0821
+temperature,24,Source 3 (AI-Model),1.0092,1.2676,0.1004
+temperature,24,Persistence,1.1275,1.409,0.0
+temperature,24,1. Equal-Weight Avg,0.5049,0.6362,0.5485
+temperature,24,2. Best Single Historical,0.4776,0.5984,0.5753
+temperature,24,3. Inverse-Error Weighting,0.3966,0.4962,0.6478
+temperature,24,4. Bias-Corrected Avg,0.5044,0.6358,0.5488
+temperature,24,5. LightGBM Blender (Stage 2),0.6567,0.8284,0.412
+temperature,48,Source 1 (NWP),1.2232,1.5298,-0.0857
+temperature,48,Source 2 (Ensemble),1.2216,1.5439,-0.0957
+temperature,48,Source 3 (AI-Model),1.1169,1.4003,0.0062
+temperature,48,Persistence,1.1275,1.409,0.0
+temperature,48,1. Equal-Weight Avg,0.6837,0.86,0.3897
+temperature,48,2. Best Single Historical,1.0607,1.3286,0.0571
+temperature,48,3. Inverse-Error Weighting,0.6753,0.8488,0.3976
+temperature,48,4. Bias-Corrected Avg,0.6846,0.8601,0.3896
+temperature,48,5. LightGBM Blender (Stage 2),0.7769,0.9725,0.3098
+temperature,72,Source 1 (NWP),2.119,2.6581,-0.8864
+temperature,72,Source 2 (Ensemble),1.4537,1.8454,-0.3097
+temperature,72,Source 3 (AI-Model),1.2034,1.5172,-0.0768
+temperature,72,Persistence,1.1275,1.409,0.0
+temperature,72,1. Equal-Weight Avg,0.9422,1.1813,0.1617
+temperature,72,2. Best Single Historical,1.179,1.4861,-0.0547
+temperature,72,3. Inverse-Error Weighting,0.8429,1.0539,0.252
+temperature,72,4. Bias-Corrected Avg,0.9363,1.1742,0.1667
+temperature,72,5. LightGBM Blender (Stage 2),0.8946,1.1188,0.206
+temperature,120,Source 1 (NWP),4.218,5.2912,-2.7552
+temperature,120,Source 2 (Ensemble),1.8755,2.3767,-0.6868
+temperature,120,Source 3 (AI-Model),1.389,1.7424,-0.2366
+temperature,120,Persistence,1.1275,1.409,0.0
+temperature,120,1. Equal-Weight Avg,1.6136,2.0239,-0.4363
+temperature,120,2. Best Single Historical,1.389,1.7424,-0.2366
+temperature,120,3. Inverse-Error Weighting,1.0679,1.3426,0.0471
+temperature,120,4. Bias-Corrected Avg,1.6001,2.0056,-0.4234
+temperature,120,5. LightGBM Blender (Stage 2),1.0297,1.2882,0.0857
+rainfall,24,Source 1 (NWP),2.4838,3.8347,0.8315
+rainfall,24,Source 2 (Ensemble),1.4885,2.3261,0.8978
+rainfall,24,Source 3 (AI-Model),1.4214,2.1774,0.9043
+rainfall,24,Persistence,10.7847,22.7628,0.0
+rainfall,24,1. Equal-Weight Avg,1.4457,1.8631,0.9182
+rainfall,24,2. Best Single Historical,1.2886,1.9997,0.9121
+rainfall,24,3. Inverse-Error Weighting,1.2571,1.621,0.9288
+rainfall,24,4. Bias-Corrected Avg,1.1715,1.6279,0.9285
+rainfall,24,5. LightGBM Blender (Stage 2),0.6622,1.1838,0.948
+rainfall,48,Source 1 (NWP),4.2549,6.6297,0.7087
+rainfall,48,Source 2 (Ensemble),2.0127,3.1022,0.8637
+rainfall,48,Source 3 (AI-Model),1.8187,2.7844,0.8777
+rainfall,48,Persistence,10.7847,22.7628,0.0
+rainfall,48,1. Equal-Weight Avg,2.2178,2.9189,0.8718
+rainfall,48,2. Best Single Historical,1.6809,2.5818,0.8866
+rainfall,48,3. Inverse-Error Weighting,1.687,2.1976,0.9035
+rainfall,48,4. Bias-Corrected Avg,1.7698,2.5244,0.8891
+rainfall,48,5. LightGBM Blender (Stage 2),0.9112,1.5853,0.9304
+rainfall,72,Source 1 (NWP),6.3734,9.9227,0.5641
+rainfall,72,Source 2 (Ensemble),2.4267,3.7823,0.8338
+rainfall,72,Source 3 (AI-Model),2.0998,3.2435,0.8575
+rainfall,72,Persistence,10.7847,22.7628,0.0
+rainfall,72,1. Equal-Weight Avg,3.0339,4.0749,0.821
+rainfall,72,2. Best Single Historical,1.996,3.0872,0.8644
+rainfall,72,3. Inverse-Error Weighting,2.0056,2.6381,0.8841
+rainfall,72,4. Bias-Corrected Avg,2.39,3.4909,0.8466
+rainfall,72,5. LightGBM Blender (Stage 2),1.1099,1.917,0.9158
+rainfall,120,Source 1 (NWP),10.4748,16.5158,0.2744
+rainfall,120,Source 2 (Ensemble),3.41,5.3187,0.7663
+rainfall,120,Source 3 (AI-Model),2.8803,4.3965,0.8069
+rainfall,120,Persistence,10.7847,22.7628,0.0
+rainfall,120,1. Equal-Weight Avg,4.7651,6.5309,0.7131
+rainfall,120,2. Best Single Historical,2.7608,4.2318,0.8141
+rainfall,120,3. Inverse-Error Weighting,2.785,3.6912,0.8378
+rainfall,120,4. Bias-Corrected Avg,3.6456,5.4128,0.7622
+rainfall,120,5. LightGBM Blender (Stage 2),1.5353,2.6155,0.8851

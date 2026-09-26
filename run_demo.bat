@@ -12,8 +12,8 @@ if %errorlevel% neq 0 (
 )
 echo.
 
-echo Step 2/5: Generating Synthetic Dataset (Bihar 5x5 Grid, 2 Years)...
-python src\generate_data.py
+echo Step 2/5: Generating Synthetic Dataset (Backend Engine - Bihar 5x5 Grid)...
+python backend\src\generate_data.py
 if %errorlevel% neq 0 (
     echo Error generating data! Exiting.
     exit /b %errorlevel%
@@ -21,7 +21,7 @@ if %errorlevel% neq 0 (
 echo.
 
 echo Step 3/5: Evaluating Stage 1 Baselines...
-python src\baselines.py
+python backend\src\baselines.py
 if %errorlevel% neq 0 (
     echo Error evaluating baselines! Exiting.
     exit /b %errorlevel%
@@ -29,7 +29,7 @@ if %errorlevel% neq 0 (
 echo.
 
 echo Step 4/5: Training Stage 2 LightGBM Stacking Model...
-python src\stacking_model.py
+python backend\src\stacking_model.py
 if %errorlevel% neq 0 (
     echo Error training Stage 2 model! Exiting.
     exit /b %errorlevel%
@@ -37,7 +37,7 @@ if %errorlevel% neq 0 (
 echo.
 
 echo Step 5/5: Training Stage 3 Adaptive Gating & Two-Stage Model...
-python src\gating_model.py
+python backend\src\gating_model.py
 if %errorlevel% neq 0 (
     echo Error training Stage 3 model! Exiting.
     exit /b %errorlevel%
@@ -45,6 +45,6 @@ if %errorlevel% neq 0 (
 echo.
 
 echo ======================================================================
-echo PIPELINE COMPLETE! LAUNCHING INTERACTIVE STREAMLIT DASHBOARD...
+echo PIPELINE COMPLETE! LAUNCHING FRONTEND STREAMLIT DASHBOARD...
 echo ======================================================================
-streamlit run dashboard\app.py
+streamlit run frontend\app.py

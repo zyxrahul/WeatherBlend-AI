@@ -1,0 +1,7 @@
+Model_Variant,MAE,RMSE,Skill_Score_RMSE,Skill_Score_MAE,RMSE_Gap_vs_Stage2,Status
+Source 1 (NWP),2.0094,3.0725,-1.1805,-0.7822,2.0067,BASELINE
+Equal-Weight Avg (Stage 1),0.9361,1.288,0.0859,0.1698,0.2222,BASELINE
+LightGBM Blender (Stage 2),0.8395,1.0658,0.2436,0.2555,0.0,STAGE 2 BENCHMARK
+Original Adaptive Gating (Stage 3),0.8361,1.1221,0.2037,0.2585,0.0563,ORIGINAL (RMSE Regression)
+Fixed Stage 3 (Huber Loss Objective),0.7503,0.9681,0.313,0.3346,-0.0977,FIXED (Closed Gap & Superior MAE/RMSE)
+Fixed Stage 3 (Quantile Loss Objective),0.7885,1.0079,0.2847,0.3007,-0.0579,FIXED (Closed Gap)

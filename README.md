@@ -6,7 +6,7 @@
 
 ## 🚀 Quick Start (One-Command Demo Execution)
 
-Run the full end-to-end pipeline (Data Generation → Baselines → Stage 2 Stacking → Stage 3 Gating → Interactive Dashboard) with a single command:
+Run the full end-to-end pipeline (Data Generation → Baselines → Stage 2 Stacking → Stage 3 Gating → Interactive Frontend Dashboard) with a single command:
 
 ### On Windows:
 ```cmd
@@ -26,26 +26,76 @@ make demo
 
 ---
 
-## 🏗️ Architecture Progression
+## ⚡ Running Frontend & Backend Separately
+
+### 1. Launch FastAPI Backend Service
+```bash
+python run_backend.py
+# or
+make backend
+```
+Access interactive API documentation at: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+
+### 2. Launch Streamlit Frontend Application
+```bash
+python run_frontend.py
+# or
+make frontend
+```
+Access interactive web dashboard at: [http://localhost:8501](http://localhost:8501)
+
+---
+
+## 📁 Project Architecture & Directory Structure
+
+```
+weather-blend-mvp/
+├── frontend/                     # Frontend Web Dashboard App
+│   ├── app.py                    # Streamlit interactive application
+│   └── requirements.txt          # Frontend dependencies
+├── backend/                      # Backend Service & ML Engine
+│   ├── main.py                   # FastAPI application server (REST API)
+│   ├── requirements.txt          # Backend dependencies
+│   ├── src/                      # Machine learning engine source code
+│   │   ├── __init__.py
+│   │   ├── generate_data.py      # Synthetic dataset generator
+│   │   ├── baselines.py          # Stage 1 baseline models
+│   │   ├── stacking_model.py     # Stage 2 LightGBM stacking blender
+│   │   └── gating_model.py       # Stage 3 Adaptive Softmax Gating & Two-Stage Head
+│   ├── models/                   # Model artifacts (.joblib)
+│   │   ├── gating_model.joblib
+│   │   └── stacking_model.joblib
+│   └── data/                     # Dataset & generated results (.parquet & .csv)
+├── run_backend.py                # Python runner for FastAPI backend
+├── run_frontend.py               # Python runner for Streamlit frontend
+├── requirements.txt              # Root master requirements
+├── run_demo.bat                  # One-command runner for Windows
+├── run_demo.sh                   # One-command runner for Bash/Linux
+└── Makefile                      # Make targets
+```
+
+---
+
+## 🏗️ Model Pipeline Progression
 
 ```
 [ NWP Model (Source 1) ] ---\
-[ Ensemble (Source 2) ] ----+--> [ Feature Engine ] --> [ Stage 3 Adaptive Softmax Gate ] --> Blended Temperature Forecast
-[ AI-Model (Source 3) ] ---/   (Diffs, Spread, Regimes,   [ Two-Stage Occurrence + Tweedie ] --> Blended Rainfall Forecast
+[ Ensemble (Source 2) ] ----+--> [ Context Feature Engine ] --> [ Stage 3 Adaptive Softmax Gate ] --> Blended Temperature Forecast
+[ AI-Model (Source 3) ] ---/   (Diffs, Spread, Regimes,        [ Two-Stage Occurrence + Tweedie ] --> Blended Rainfall Forecast
                                 Causal 7d Errors)
 ```
 
-### 1. **Stage 1 Baselines (`src/baselines.py`)**
+### 1. **Stage 1 Baselines (`backend/src/baselines.py`)**
 * **Equal-Weight Ensemble Average:** Standard mean $\frac{1}{3}(S_1 + S_2 + S_3)$.
 * **Best Single Historical Model:** Picks source with lowest training MAE per `(variable, lead_hours, season)` group.
 * **Inverse-Error Skill Weighting:** Dynamic weights $w_m \propto (E_m + \epsilon)^{-2}$ based on training MAE $E_m$.
 * **Bias-Corrected Model Average:** Subtracts additive training bias per source, then averages.
 
-### 2. **Stage 2 Stacking Blender (`src/stacking_model.py`)**
+### 2. **Stage 2 Stacking Blender (`backend/src/stacking_model.py`)**
 * **LightGBM Regressor** with residual target learning ($\delta = \text{observation} - \text{ens\_mean}$).
 * Features: Raw sources, pairwise differences, ensemble mean & spread, lead horizon, trigonometric seasonal encodings ($\sin/\cos$), spatial grid coordinates, weather regime clusters, and 7-day causal rolling historical error.
 
-### 3. **Stage 3 Adaptive Gating & Two-Stage Rainfall Head (`src/gating_model.py`)**
+### 3. **Stage 3 Adaptive Gating & Two-Stage Rainfall Head (`backend/src/gating_model.py`)**
 * **Temperature Head:** Multi-head GBDT predicting dynamic **Softmax weights** ($w_1, w_2, w_3 \ge 0$, $\sum w_i = 1$) over the 3 sources: $\hat{y}_{\text{temp}} = \sum w_m S_m + b_{\text{bias}}$.
 * **Rainfall Two-Stage Head:**
   * **Stage 1 (Occurrence Classifier):** `LGBMClassifier` predicting probability of precipitation $P(\text{rain} > 0.1\text{ mm})$. Evaluated via **Brier Score** and **CSI Threat Score**.
@@ -54,7 +104,7 @@ make demo
 
 ---
 
-## 📊 Final Hackathon Pitch Deck Results Table (Year 2 Test Set)
+## 📊 Evaluation Results (Year 2 Test Set)
 
 Strict time-based evaluation (Train = 2023 / Year 1, Test = 2024 / Year 2; 73,000 test samples).
 
@@ -87,39 +137,3 @@ Strict time-based evaluation (Train = 2023 / Year 1, Test = 2024 / Year 2; 73,00
 | 4. Bias-Corrected Average | 0.9313 | 1.2792 | 0.0922 | 0.1740 |
 | 5. LightGBM Blender (Stage 2) | 0.8395 | 1.0658 | 0.2436 | 0.2555 |
 | **6. Adaptive Gating Head (Stage 3)** | **0.8361** | **1.1221** | **0.2037** | **0.2585** |
-
----
-
-## 🎯 Key Live Demo Features in Dashboard
-
-Run `streamlit run dashboard/app.py` to launch the interactive UI:
-
-1. **⚡ Quick-Select Demo Presets:**
-   * **☀️ Ordinary Period Preset:** Hardcoded to `2024-02-15` (Dry Winter).
-   * **🌧️ Heavy-Rain Event Preset:** Hardcoded to `2024-06-09` (Heavy Monsoon Convective Rain Event).
-2. **🗺️ Spatial Grid Map:** Side-by-side $5 \times 5$ Bihar heatmaps (Blend vs Observation).
-3. **🎯 Weight Map Panel:** Displays dominant trusted source ($w_{\text{NWP}}, w_{\text{Ensemble}}, w_{\text{AI}}$) per grid cell.
-4. **🟢 Confidence Layer:** Color-coded (Green/Amber/Red) based on model spread and skill.
-5. **🌧️ Reliability Diagram:** Precipitation calibration curve + Brier Score & CSI badges.
-
----
-
-## 📁 Repository Structure
-```
-weather-blend-mvp/
-├── data/                         # Parquet & CSV data tables
-├── src/
-│   ├── generate_data.py          # Synthetic dataset generator
-│   ├── baselines.py              # Stage 1 baseline models
-│   ├── stacking_model.py         # Stage 2 LightGBM stacking blender
-│   └── gating_model.py           # Stage 3 Adaptive Softmax Gating & Two-Stage Head
-├── models/
-│   ├── stacking_model.joblib     # Saved Stage 2 model artifact
-│   └── gating_model.joblib       # Saved Stage 3 model artifact
-├── dashboard/
-│   └── app.py                    # Streamlit interactive application
-├── requirements.txt              # Dependencies
-├── run_demo.bat                  # One-command runner for Windows
-├── run_demo.sh                   # One-command runner for Bash/Linux
-└── Makefile                      # Make targets
-```

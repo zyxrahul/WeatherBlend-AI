@@ -1,23 +1,26 @@
-.PHONY: all data baselines stacking gating dashboard demo clean
+.PHONY: all data baselines stacking gating backend frontend demo clean
 
 all: demo
 
 data:
-	python src/generate_data.py
+	python backend/src/generate_data.py
 
 baselines:
-	python src/baselines.py
+	python backend/src/baselines.py
 
 stacking:
-	python src/stacking_model.py
+	python backend/src/stacking_model.py
 
 gating:
-	python src/gating_model.py
+	python backend/src/gating_model.py
 
-dashboard:
-	streamlit run dashboard/app.py
+backend:
+	python run_backend.py
 
-demo: data baselines stacking gating dashboard
+frontend:
+	streamlit run frontend/app.py
+
+demo: data baselines stacking gating frontend
 
 clean:
-	rm -rf data/*.parquet data/*.csv models/*.joblib
+	rm -rf backend/data/*.parquet backend/data/*.csv backend/models/*.joblib

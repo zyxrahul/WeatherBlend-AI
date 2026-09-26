@@ -1,0 +1,21 @@
+variable,model,MAE,RMSE,Skill_Score_RMSE,Skill_Score_MAE,Brier_Score,CSI
+temperature,Source 1 (NWP),2.0094,3.0725,-1.1805,-0.7822,N/A,N/A
+temperature,Source 2 (Ensemble),1.3929,1.8105,-0.2849,-0.2353,N/A,N/A
+temperature,Source 3 (AI-Model),1.1796,1.4921,-0.0589,-0.0462,N/A,N/A
+temperature,Persistence,1.1275,1.409,0.0,0.0,N/A,N/A
+temperature,1. Equal-Weight Avg,0.9361,1.288,0.0859,0.1698,N/A,N/A
+temperature,2. Best Single Historical,1.0266,1.3572,0.0368,0.0895,N/A,N/A
+temperature,3. Inverse-Error Weighting,0.7457,0.9849,0.301,0.3387,N/A,N/A
+temperature,4. Bias-Corrected Avg,0.9313,1.2792,0.0922,0.174,N/A,N/A
+temperature,5. LightGBM Blender (Stage 2),0.8395,1.0658,0.2436,0.2555,N/A,N/A
+temperature,6. Adaptive Gating Head (Stage 3),0.8361,1.1221,0.2037,0.2585,N/A,N/A
+rainfall,Source 1 (NWP),5.8967,10.3669,0.5446,0.4532,0.1846,0.5143
+rainfall,Source 2 (Ensemble),2.3345,3.7957,0.8333,0.7835,0.0944,0.6656
+rainfall,Source 3 (AI-Model),2.055,3.2536,0.8571,0.8094,0.079,0.7151
+rainfall,Persistence,10.7847,22.7628,0.0,0.0,0.2552,0.3778
+rainfall,1. Equal-Weight Avg,2.8656,4.2204,0.8146,0.7343,0.0895,0.6824
+rainfall,2. Best Single Historical,1.9316,3.0864,0.8644,0.8209,0.0773,0.7234
+rainfall,3. Inverse-Error Weighting,1.9337,2.6477,0.8837,0.8207,0.069,0.7658
+rainfall,4. Bias-Corrected Avg,2.2442,3.5534,0.8439,0.7919,0.0821,0.7144
+rainfall,5. LightGBM Blender (Stage 2),1.0546,1.8994,0.9166,0.9022,0.0744,0.76
+rainfall,6. Adaptive Gating Head (Stage 3),0.9846,2.2091,0.903,0.9087,0.0529,0.8049
