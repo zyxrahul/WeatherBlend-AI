@@ -1,0 +1,25 @@
+variable,model,MAE,RMSE,Skill_Score_RMSE,Skill_Score_MAE
+all,Source 1 (NWP),3.9531,7.6456,0.5371,0.4008
+all,Source 2 (Ensemble),1.8637,2.9736,0.82,0.7175
+all,Source 3 (AI-Model),1.6173,2.531,0.8468,0.7549
+all,Persistence,6.5975,16.5169,0.0,0.0
+all,1. Equal-Weight Avg,1.9009,3.1202,0.8111,0.7119
+all,2. Best Single Historical,1.4791,2.3841,0.8557,0.7758
+all,3. Inverse-Error Weighting,1.3397,1.9976,0.8791,0.7969
+all,4. Bias-Corrected Avg,1.5878,2.6705,0.8383,0.7593
+temperature,Source 1 (NWP),2.0094,3.0725,-0.1641,0.033
+temperature,Source 2 (Ensemble),1.3929,1.8105,0.314,0.3297
+temperature,Source 3 (AI-Model),1.1796,1.4921,0.4347,0.4324
+temperature,Persistence,2.0781,2.6393,0.0,0.0
+temperature,1. Equal-Weight Avg,0.9361,1.288,0.512,0.5495
+temperature,2. Best Single Historical,1.0266,1.3572,0.4858,0.506
+temperature,3. Inverse-Error Weighting,0.7457,0.9849,0.6268,0.6412
+temperature,4. Bias-Corrected Avg,0.9313,1.2792,0.5153,0.5518
+rainfall,Source 1 (NWP),5.8967,10.3669,0.5533,0.4696
+rainfall,Source 2 (Ensemble),2.3345,3.7957,0.8365,0.79
+rainfall,Source 3 (AI-Model),2.055,3.2536,0.8598,0.8151
+rainfall,Persistence,11.1168,23.2088,0.0,0.0
+rainfall,1. Equal-Weight Avg,2.8656,4.2204,0.8182,0.7422
+rainfall,2. Best Single Historical,1.9316,3.0864,0.867,0.8262
+rainfall,3. Inverse-Error Weighting,1.9337,2.6477,0.8859,0.8261
+rainfall,4. Bias-Corrected Avg,2.2442,3.5534,0.8469,0.7981
