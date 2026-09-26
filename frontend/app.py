@@ -16,8 +16,16 @@ import plotly.graph_objects as go
 import streamlit as st
 import scipy.ndimage as ndimage
 from scipy.interpolate import griddata
-from shapely.geometry import shape
-from shapely import contains_xy
+
+try:
+    from shapely.geometry import shape
+    from shapely import contains_xy
+    HAS_SHAPELY = True
+except ImportError:
+    HAS_SHAPELY = False
+    shape = None
+    contains_xy = None
+
 
 try:
     from dotenv import load_dotenv
@@ -902,9 +910,24 @@ with left_map_col:
 
     target_poly = state_polygons.get(selected_region)
     if target_poly and selected_region != "All India":
-        # Buffer polygon slightly (0.008°) to cover state edges cleanly without spillover
-        buffered_poly = target_poly.buffer(0.008)
-        clip_mask = contains_xy(buffered_poly, mesh_lon, mesh_lat)
+        if HAS_SHAPELY and contains_xy is not None:
+            try:
+                buffered_poly = target_poly.buffer(0.008)
+                clip_mask = contains_xy(buffered_poly, mesh_lon, mesh_lat)
+            except Exception:
+                clip_mask = np.ones(mesh_lat.shape, dtype=bool)
+        else:
+            try:
+                import matplotlib.path as mpath
+                coords = list(target_poly.exterior.coords) if hasattr(target_poly, "exterior") else []
+                if coords:
+                    path = mpath.Path(coords)
+                    pts_grid = np.column_stack((mesh_lon.ravel(), mesh_lat.ravel()))
+                    clip_mask = path.contains_points(pts_grid).reshape(mesh_lat.shape)
+                else:
+                    clip_mask = np.ones(mesh_lat.shape, dtype=bool)
+            except Exception:
+                clip_mask = np.ones(mesh_lat.shape, dtype=bool)
     else:
         clip_mask = np.ones(mesh_lat.shape, dtype=bool)
 
